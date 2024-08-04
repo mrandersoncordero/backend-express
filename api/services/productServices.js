@@ -13,7 +13,7 @@ class ProductService {
 
     for (let i = 0; i < limit; i++) {
       this.products.push({
-        id: faker.datatype.uuid(),
+        id: faker.string.uuid(),
         name: faker.commerce.productName(),
         price: parseInt(faker.commerce.price(), 10),
         image: faker.image.imageUrl(),
@@ -40,12 +40,12 @@ class ProductService {
     if (product.isBlock) {
       throw boom.conflict('product is block');
     }
-    return  product;
+    return product;
   }
 
   async create(data) {
     const newProduct = {
-      id: faker.datatype.uuid(),
+      id: faker.string.uuid(),
       ...data
     }
     this.products.push(newProduct); // agregarlo al arreglo

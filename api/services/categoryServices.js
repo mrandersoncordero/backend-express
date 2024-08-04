@@ -12,7 +12,7 @@ class CategoryService {
 
     for (let i = 0; i < limit; i++) {
       this.categories.push({
-        id: faker.datatype.uuid(),
+        id: faker.string.uuid(),
         name: faker.commerce.department()
       })
     }
@@ -33,7 +33,7 @@ class CategoryService {
 
   async create(data) {
     const newCategory = {
-      id: faker.datatype.uuid(),
+      id: faker.string.uuid(),
       ...data
     }
     this.categories.push(newCategory);

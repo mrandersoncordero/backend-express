@@ -12,7 +12,7 @@ class UserService {
 
     for (let i = 0; i < limit; i++) {
       this.users.push({
-        id: faker.datatype.uuid(),
+        id: faker.string.uuid(),
         first_name: faker.person.firstName(),
         last_name: faker.person.lastName(),
         gender: faker.person.gender(),
@@ -36,7 +36,7 @@ class UserService {
 
   async create(data) {
     const newUser = {
-      id: faker.datatype.uuid(),
+      id: faker.string.uuid(),
       ...data
     }
 
