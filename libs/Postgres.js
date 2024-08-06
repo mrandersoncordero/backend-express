@@ -1,14 +1,13 @@
 const { Pool } = require('pg');
+const { config } = require('./../config/config');
+
+const USER = encodeURIComponent(config.dbUser);
+const PASSWORD = encodeURIComponent(config.dbPassword);
+const URI = `postgres://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${config.dbName}`;
 
 class Postgres {
     constructor() {
-        this.config = {
-            host: 'localhost',
-            database: 'my_store',
-            port: 5432,
-            user: 'ander',
-            password: 'admin123'
-        };
+        this.config = { connectionString: URI };
         this.pool = null;
     }
 
