@@ -1,13 +1,13 @@
-const { faker } = require('@faker-js/faker');
+const { faker, da } = require('@faker-js/faker');
 const boom = require('@hapi/boom');
 
-const Postgres = require('../../libs/Postgres');
+// const Postgres = require('../../libs/Postgres');
+const sequelize = require('../../libs/sequelize');
 
 class UserService {
   constructor() {
     this.users = [];
     this.generate();
-    this.db = new Postgres();
   }
 
   generate() {
@@ -25,9 +25,8 @@ class UserService {
   }
 
   async find() {
-    const client = await this.db.connect();
-    const rta = await client.query('SELECT * FROM tasks');
-    return rta.rows;
+    const [data, metadata] = await sequelize.query('SELECT * FROM tasks');
+    return data;
   }
 
   async findOne(id) {
