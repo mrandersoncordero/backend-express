@@ -26,7 +26,7 @@ class UserService {
 
   async find() {
     const client = await this.db.connect();
-    const rta = await client.query('SELECT * FROM task');
+    const rta = await client.query('SELECT * FROM tasks');
     return rta.rows;
   }
 
